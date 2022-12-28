@@ -1,7 +1,6 @@
-import { MenuOutlined } from "@material-ui/icons";
+import { Close, MenuOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MenuItems from "./MenuItems";
 
 const Header = () => {
   const [active, setActive] = useState(false);
@@ -23,26 +22,41 @@ const Header = () => {
         </div>
         <ul className="hidden md:flex gap-8 p-6 uppercase bg-black/30 rounded-md">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Verse of The Day</Link>
           </li>
           <li>
-            <Link to="/">Testimony</Link>
+            <Link to="/">Bible</Link>
           </li>
           <li>
-            <Link to="/">Information</Link>
-          </li>
-          <li>
-            <Link to="/">Jobs</Link>
+            <Link to="/">Devotion</Link>
           </li>
           <li>
             <Link to="/">About</Link>
           </li>
-          <li>
-            <Link to="/">Contact</Link>
-          </li>
         </ul>
 
-        <MenuItems showMenu={showMenu} active={active} />
+        <ul
+          className={
+            active
+              ? " flex-col flex items-center fixed inset-0 left-1/4 gap-8 p-8 bg-black/40 backdrop-blur-lg justify-center md:hidden"
+              : "hidden"
+          }
+        >
+          <Close onClick={showMenu} className="scale-150" />
+
+          <li>
+            <Link to="/">Verse of The Day</Link>
+          </li>
+          <li>
+            <Link to="/">Bible</Link>
+          </li>
+          <li>
+            <Link to="/">Devotion</Link>
+          </li>
+          <li>
+            <Link to="/">About</Link>
+          </li>
+        </ul>
       </nav>
     </div>
   );
